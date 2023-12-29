@@ -144,10 +144,14 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                                 loading = true;
                               });
                               auth.verifyPhoneNumber(
+                                  timeout: Duration(seconds: 50),
                                   phoneNumber:
                                       phoneNumberController.text.trim(),
-                                  verificationCompleted: (_) {},
-                                  verificationFailed: (e) {
+                                  verificationCompleted:
+                                      (PhoneAuthCredential) async {
+                                    return;
+                                  },
+                                  verificationFailed: (e) async {
                                     //for error show
                                     Get.snackbar(
                                         "Error show message", e.toString());
@@ -156,7 +160,8 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                                       loading = false;
                                     });
                                   },
-                                  codeSent: (String verification, int? token) {
+                                  codeSent:
+                                      (String verification, int? token) async {
                                     Get.to(() => VerifyCodeScreen(
                                           verificationId: verification,
                                         ));
