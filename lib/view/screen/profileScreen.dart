@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             actions: [
               IconButton(
                 onPressed: () {
+                  registrations.signOut();
                   Get.snackbar("TikTok Clone Yt App", "Current Version 1.0");
                 },
                 icon: Icon(Icons.info_outline_rounded),

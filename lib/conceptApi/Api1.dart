@@ -27,8 +27,8 @@ class _ApiConceoptState extends State<ApiConceopt> {
                     itemCount: sampleData.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin:
-                            const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
                         color: Colors.teal,
                         height: 150,
                         child: Column(
@@ -59,7 +59,7 @@ class _ApiConceoptState extends State<ApiConceopt> {
     var data = jsonDecode(responce.body.toString());
     if (responce.statusCode == 200) {
       for (Map<String, dynamic> index in data) {
-        sampleData.add(Name.fromJson(index));
+        sampleData.add(Name.fromJson(index)); //or fromMap
       }
       return sampleData;
     } else {
